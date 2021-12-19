@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="design.css">
+    <meta name="author" content="Muhammad Raiyaan">
+    <meta name="keywords" content="Portfolio">
+    <meta name="description" content="This is a portfolio site where you can add your details here and get the details with a portfolio code">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="brand">Portfolio</a>
+        <ul>
+            <li><a href="profile.html">Create a new portfolio</a></li>
+        </ul>
+    </nav><br><br>
+    <div class="form">
+        <input type="number" id="id" placeholder="Enter the portfolio id..." required>
+        <input type="submit" value="Submit" id="submit">
+    </div><br><br>
+    <div id="s" style="display: flex;
+    justify-content: center;"><div class="out" id="out"></div>
+</div>
+    <script>
+        const firebaseConfig = {
+    apiKey: "AIzaSyDHF47yJMzXCgSPM_pX60FHXeCcReknNpQ",
+    authDomain: "portfolio-bb1fb.firebaseapp.com",
+    databaseURL: "https://portfolio-bb1fb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "portfolio-bb1fb",
+    storageBucket: "portfolio-bb1fb.appspot.com",
+    messagingSenderId: "410786591647",
+    appId: "1:410786591647:web:023ed00a15901db080c3aa",
+    measurementId: "${config.measurementId}"
+  }
+  let inp=document.getElementById("id")
+  firebase.initializeApp(firebaseConfig);
+  let submitter=document.getElementById("submit")
+  let output=document.getElementById("out")
+  let s=document.getElementById("s")
+  s.style.display="none"
+  submit.onclick=function(){
+      firebase.database().ref("Profiles/"+inp.value).once("value", function(snap){
+        let data=snap.val()
+        s.style.display="flex"
+        output.innerHTML+=`<div style="margin-top:10px; margin-left:10px;">
+            <div style="display:flex;">
+            <p><span style="color:orange;">Name:</span> : <span style="color:lightblue">${data.Name}</span></p>
+            <p style=margin-left:50px><span style="color:orange;">Birth:</span> : <span style="color:lightblue">${data.Birth}</span></p>
+            <p style=margin-left:50px><span style="color:orange;">Email:</span> : <span style="color:lightblue">${data.Email}</span></p>
+            <p style=margin-left:50px><span style="color:orange;">Gender:</span> : <span style="color:lightblue">${data.Gender}</span></p></div>
+            <div style="display:flex; margin-top:10px;">
+            <p><span style="color:orange;">Profession:</span> : <span style="color:lightblue">${data.Profession}</span></p>
+            <p style=margin-left:50px><span style="color:orange;">From:</span> : <span style="color:lightblue">${data.Country} / ${data.State} / ${data.City}</span></p></div></div>`
+      })
+  }
+    </script>
+</body>
+</html>

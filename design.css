@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@700&family=Pinyon+Script&family=Seaweed+Script&display=swap');
+*{
+    margin: 0;
+}
+nav{
+    display:flex;
+    align-items:center;
+    height: 70px;
+    width: 100%;
+    background: antiquewhite;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+    font-family: 'Baloo Da 2', cursive;
+    margin-left: -30px;
+    font-size: 18px;
+}
+nav ul li{
+    margin-left: 10px;
+}
+nav ul li a{
+    color: red;
+    text-decoration: none;
+    transition: 0.5s;
+}
+nav ul li a:hover{
+    background: white;
+    padding: 5px 5px;
+    border-radius: 20px;
+}
+.brand{
+    cursor: pointer !important;
+    margin-left: 10px;
+    font-size: 35px;
+    color: mediumslateblue;
+    font-family: 'Seaweed Script', cursive;
+    text-decoration: none;
+}
+.out{
+    background: rgb(8, 8, 8);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    height: 100px;
+    width: 95%;
+    border-radius: 10px;
+}
+.form{
+    margin-left: 10%;
+}
+#id{
+    border: 0;
+    border-bottom: 2px solid rgb(125, 255, 125);
+    width: 20%;
+}
+#Named,#birth,#Email,#Country,#City,#State,#Profession,#Gender{
+    display: block;
+    margin-top: 10px;
+    margin-left: 3%;
+    border: 0;
+    border-bottom: 2px solid rgb(207, 0, 0)
+}
+label{
+    font-size: 18px;
+}
+#submit{
+    border: 2px solid tomato;
+    background: white;
+    padding: 7px 10px;
+    border-radius: 15px;
+    color: tomato;
+    transition: 1s;
+    margin-left: 10px;
+}
+#submit:hover{
+    background: tomato;
+    color: white;
+    transform: rotateX(360deg);
+}
+.form2{
+    background: white;
+    padding: 20px 20px; 
+}
+#Submit{
+    background-image: radial-gradient(circle,green,lightgreen);
+    border: 0;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+@media screen and (max-width:700px) {
+    .brand{
+        font-size: 20px;
+    }
+    nav ul li a{
+        font-size: 10px;
+        margin-left: -5px;
+    }
+}

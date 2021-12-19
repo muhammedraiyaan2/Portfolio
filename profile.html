@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a profile</title>    
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="brand">Portfolio</a>
+        <ul>
+            <li><a href="profile.html">Create a new portfolio</a></li>
+        </ul>
+    </nav><br><br>
+    <div class="form2">
+        <label for="Name">Name:</label>
+        <input type="text" name="Name" id="Named" placeholder="Enter your name" required><br>
+        <label for="birth">Date of birth:</label>
+        <input type="text" name="Date of birth" id="birth" placeholder="Enter your Date of birth" required><br>
+        <label for="Email">Email:</label>
+        <input type="email" name="Email" id="Email" placeholder="Enter your Email" required><br>
+        <label for="Gender">Gender:</label>
+        <input type="text" name="Gender" id="Gender" placeholder="Enter your Gender" required><br>
+        <label for="Country">Country:</label>
+        <input type="text" name="Country" id="Country" placeholder="Enter your Country" required><br>
+        <label for="State">State:</label>
+        <input type="text" name="State" id="State" placeholder="Enter your State" required><br>
+        <label for="City">City:</label>
+        <input type="text" name="City" id="City" placeholder="Enter your City" required><br>
+        <label for="Profession">Profession:</label>
+        <input type="text" name="Profession" id="Profession" placeholder="Enter your Profession" required><br>
+        <button id="Submit">Submit</button>
+        <br>
+        <h1 id="code"></h1>
+    </div>
+    <script>
+          const firebaseConfig = {
+    apiKey: "AIzaSyDHF47yJMzXCgSPM_pX60FHXeCcReknNpQ",
+    authDomain: "portfolio-bb1fb.firebaseapp.com",
+    databaseURL: "https://portfolio-bb1fb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "portfolio-bb1fb",
+    storageBucket: "portfolio-bb1fb.appspot.com",
+    messagingSenderId: "410786591647",
+    appId: "1:410786591647:web:023ed00a15901db080c3aa",
+    measurementId: "${config.measurementId}"
+  }
+  let rand=Math.floor(Math.random()*9999999999+1)
+  firebase.initializeApp(firebaseConfig);
+  let names=document.getElementById("Named");
+  let birth=document.getElementById("birth");
+  let email=document.getElementById("Email");
+  let gender=document.getElementById("Gender");
+  let country=document.getElementById("Country");
+  let state=document.getElementById("State");
+  let city=document.getElementById("City");
+  let profession=document.getElementById("Profession");
+  let submit=document.getElementById("Submit")
+  let code=document.getElementById("code")
+  submit.onclick=function(){
+      firebase.database().ref("Profiles/"+rand).set({
+        Name:names.value,
+        Birth:birth.value,
+        Email:email.value,
+        Gender:gender.value,
+        Country:country.value,
+        State:state.value,
+        City:city.value,
+        Profession:profession.value,
+      })
+      code.innerText=`Your ID is: ${rand}`
+  }
+    </script>
+</body>
+</html>
